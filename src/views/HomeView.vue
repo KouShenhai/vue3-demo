@@ -1,5 +1,25 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+
+import { use } from "echarts/core";
+import { CanvasRenderer } from "echarts/renderers";
+import { PieChart, LineChart } from "echarts/charts";
+import VChart from "vue-echarts";
+import {
+  TitleComponent,
+  TooltipComponent,
+  LegendComponent,
+  GridComponent,
+} from "echarts/components";
+use([
+  CanvasRenderer,
+  PieChart,
+  TitleComponent,
+  TooltipComponent,
+  LegendComponent,
+  GridComponent,
+  LineChart
+]);
+
 import { ref,computed } from 'vue';
 
 const data=ref([
@@ -40,10 +60,7 @@ setInterval(()=>{
 
 <template>
   <main>
-<!--
-    <TheWelcome />
--->
-    <e-charts class="chart" :option="option" />
+    <VChart class="chart" :option="option" />
   </main>
 </template>
 <style>
